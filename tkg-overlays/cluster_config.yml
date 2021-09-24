@@ -1,0 +1,3 @@
+
+#just add this line to your config file that defines the cluster settings
+AVI_CP_SETTING_NAME: <aviinfrasettings CRD name>

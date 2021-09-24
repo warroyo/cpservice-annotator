@@ -1,0 +1,39 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: cpservice-annotator-system
+spec: {}
+status: {}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cpservice-annotator
+  namespace: cpservice-annotator-system
+  labels:
+    app: cpservice-annotator
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cpservice-annotator
+  template:
+    metadata:
+      labels:
+        app: cpservice-annotator
+    spec:
+      containers:
+        - name: cpservice-annotator
+          image: warroyo90/cpservice-annotator:latest
+          imagePullPolicy: Always
+          args:
+            - -certDir=/etc/webhook/certs
+            - -port=8443
+          volumeMounts:
+            - name: webhook-certs
+              mountPath: /etc/webhook/certs
+              readOnly: true
+      volumes:
+        - name: webhook-certs
+          secret:
+            secretName: cpservice-annotator-certs

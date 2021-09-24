@@ -1,0 +1,10 @@
+apiVersion: ako.vmware.com/v1alpha1
+kind: AviInfraSetting
+metadata:
+  name: <infraname>
+spec:
+  seGroup:
+    name: Default-Group
+  network:
+    names:
+      - <name from avicontroller>
