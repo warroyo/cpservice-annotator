@@ -13,6 +13,8 @@ The cpservice-annotator is a k8s mutating webhook that will inject the right AKO
 
 ## Architecture
 
+![arch](./images/cpservice-annotator.jpg)
+
 
 ## Install
 
